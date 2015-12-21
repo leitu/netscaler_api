@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_restful import Api
-from storage_api.resources.task import Task
-from storage_api.resources.loadbalance import Loadbalances, Loadbalance, LoadbalanceName,Servers, Server, Services, Service
+from netscaler_api.resources.task import Task
+from netscaler_api.resources.loadbalance import Loadbalances, Loadbalance, LoadbalanceName,Servers, Server, Services, Service
 
-from storage_api.common.util import initialize_logging
+from netscaler_api.common.util import initialize_logging
 
 initialize_logging('logging.conf')
 app = Flask(__name__)
@@ -23,4 +23,4 @@ api.add_resource(Services, '/v1/lb/<string:lb>/service/')
 api.add_resource(Service, '/v1/lb/<string:lb>/service/<string:service>')
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  app.run(debug=True, host='0.0.0.0')

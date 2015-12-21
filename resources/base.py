@@ -15,7 +15,7 @@ class Base(Resource):
     self.reqparse.add_argument('loadbalance', type=str, required=True)
     self.uuid = str(uuid.uuid4())
     self.user = 'joebloggs' # FIXME
-    url = 'amqp://test:test@localhost:5672/%2F' # FIXME
+    url = 'amqp://test:test@127.0.0.1:5672/%2F' # FIXME
     self.mq = Queue(url, key='loadblance') #api input
     super(Base, self).__init__()
 

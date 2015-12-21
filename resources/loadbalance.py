@@ -1,4 +1,4 @@
-from storage_api.resources.base import Base
+from netscaler_api.resources.base import Base
 
 class Loadbalances(Base):
   def get(self):
@@ -20,18 +20,16 @@ class Loadbalance(Base):
     return {'task_id': self.uuid}, 202
 
 
-# class LoadbalanceName(Base):
-#   def put(self, volume):
-#     self.reqparse.add_argument('new_name', type=str, required=True)
-#     print self.queue('volume', 'rename', self.reqparse.parse_args())
-#     return {'task_id': self.uuid}, 202
+class LoadbalanceName(Base):
+  def put(self, loadbalance):
+    print self.queue('loadbalance', 'rename', self.reqparse.parse_args())
+    return {'task_id': self.uuid}, 202
 
 
-# class Servers(Base):
-#   def put(self, server):
-#     self.reqparse.add_argument('volume_size', type=netapp_size, required=True)
-#     print self.queue('volume', 'resize', self.reqparse.parse_args())
-#     return {'task_id': self.uuid}, 202
+class Servers(Base):
+  def put(self, server):
+    print self.queue('server', '', self.reqparse.parse_args())
+    return {'task_id': self.uuid}, 202
 
 
 class Server(Base):
